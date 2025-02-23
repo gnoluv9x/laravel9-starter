@@ -1,6 +1,6 @@
 <h1>Danh sách sinh viên</h1>
 
-<a href="{{ route('student.create') }}">Thêm mới</a>
+<a href="{{ route('students.create') }}">Thêm mới</a>
 <br>
 <br>
 
@@ -20,9 +20,9 @@
             <td>{{ $each->fullName }}</td>
             <td>{{ $each->getAge }}</td>
             <td>{{ $each->getGender }}</td>
-            <td><a href="{{ route('student.edit', ['id' => $each->id]) }}">Edit</a></td>
+            <td><a href="{{ route('students.edit', $each) }}">Edit</a></td>
             <td>
-                <form action="{{ route('student.delete', ['id' => $each->id]) }}" method="POST">
+                <form action="{{ route('students.destroy', $each) }}" method="POST">
                     @csrf
                     @method('DELETE')
 

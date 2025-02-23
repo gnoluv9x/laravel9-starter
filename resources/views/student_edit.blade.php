@@ -1,6 +1,6 @@
 <h1>Thêm mới sinh viên</h1>
 
-<form action="{{ route('student.update', ['id' => $student->id]) }}" method="POST">
+<form action="{{ route('students.update', $student) }}" method="POST">
     @csrf
     @method('PUT')
 

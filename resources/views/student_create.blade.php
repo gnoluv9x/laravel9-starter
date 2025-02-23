@@ -1,6 +1,6 @@
 <h1>Thêm mới sinh viên</h1>
 
-<form action="{{ route('student.store') }}" method="post">
+<form action="{{ route('students.store') }}" method="post">
     @csrf
 
     <label for="first_name">First Name</label>

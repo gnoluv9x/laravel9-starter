@@ -23,15 +23,22 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+        // 2 Way to do that
+
+        // 1. Using object
+        // $student = new Student();
+        // $student->first_name = $request->get("first_name");
+        // $student->last_name = $request->get("last_name");
+        // $student->birthday = $request->get("birthday");
+        // $student->gender = $request->get("gender");
+        // $student->save();
+
+        // 2. Using eloquent
         $student = new Student();
-        $student->first_name = $request->get("first_name");
-        $student->last_name = $request->get("last_name");
-        $student->birthday = $request->get("birthday");
-        $student->gender = $request->get("gender");
-        // save to db
+        $student->fill($request->all());
         $student->save();
 
-        return redirect()->route('student.index');
+        return redirect()->route('students.index');
     }
 
     public function edit($id)
@@ -46,27 +53,34 @@ class StudentController extends Controller
     public function update(Request $request, string $id)
     {
         $student = new Student();
-        $student->first_name = $request->get("first_name");
-        $student->last_name = $request->get("last_name");
-        $student->birthday = $request->get("birthday");
-        $student->gender = $request->get("gender");
 
-        $student->save();
+        // 2 Way to do that
+        // 1. Using OOP
+        // $student->first_name = $request->get("first_name");
+        // $student->last_name = $request->get("last_name");
+        // $student->birthday = $request->get("birthday");
+        // $student->gender = $request->get("gender");
+        // $student->save();
 
-        return redirect()->route('student.index');
+        // 2. Using eloquent
+        $student->fill($request->all());
+
+        return redirect()->route('students.index');
     }
 
     // public function destroy(string $id)
     // {
     //     Student::destroy($id);
 
-    //     return redirect()->route('student.index');
+    //     return redirect()->route('students.index');
     // }
 
-    public function destroy(string $id)
+    public function destroy(Student $student)
     {
-        Student::destroy($id);
+        // Student::destroy($id);
 
-        return redirect()->route('student.index');
+        $student->delete();
+
+        return redirect()->route('students.index');
     }
 }

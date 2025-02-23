@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
-Route::post('/student/create', [StudentController::class, 'store'])->name('student.store');
-Route::get('/student/{id}', [StudentController::class, 'edit'])->name('student.edit');
-Route::put('/student/{id}', [StudentController::class, 'update'])->name('student.update');
-Route::delete('/student/{id}', [StudentController::class, 'destroy'])->name('student.delete');
-Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+Route::resource("students", StudentController::class);
+
+// Route::group(['prefix' => "student", "as" => "student."], function () {
+//   Route::get('/create', [StudentController::class, 'create'])->name('create');
+//   Route::post('/create', [StudentController::class, 'store'])->name('store');
+//   Route::get('/{id}', [StudentController::class, 'edit'])->name('edit');
+//   Route::put('/{id}', [StudentController::class, 'update'])->name('update');
+//   Route::delete('/{id}', [StudentController::class, 'destroy'])->name('delete');
+//   Route::get('/', [StudentController::class, 'index'])->name('index');
+// });

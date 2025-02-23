@@ -10,6 +10,8 @@ class Student extends Model
 {
     use HasFactory;
 
+    public $fillable = ['first_name', 'last_name', 'birthday', 'gender'];
+
     public $timestamps = false;
 
     protected function fullName(): Attribute
