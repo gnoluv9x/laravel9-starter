@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/name', [WelcomeController::class, 'create']);
-Route::post('/post', [WelcomeController::class, 'post']);
-Route::get('/{slug}', [WelcomeController::class, 'index']);
+Route::resource("courses", CourseController::class);
