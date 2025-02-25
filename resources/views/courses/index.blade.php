@@ -4,6 +4,11 @@
 <br>
 <br>
 
+<form>
+    <label for="q">Search</label>
+    <input type="search" name="q" id="q" value="{{ $search }}">
+</form>
+
 <table border="1" width="100%">
     <tr>
         <th>#</th>
@@ -28,3 +33,5 @@
         </tr>
     @endforeach
 </table>
+
+{{ $courses->links() }}

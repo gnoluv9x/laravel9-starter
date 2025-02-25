@@ -7,6 +7,11 @@
     <label for="name">Name</label>
     <input type="text" name="name" id="name" value="{{ $course->name }}">
     <br>
+    @error('name')
+        <div class="alert alert-danger">
+            <span>{{ $message }}</span>
+        </div>
+    @enderror
     <br>
 
     <input type="submit" value="Submit">
