@@ -1,4 +1,4 @@
-<h1>Thêm sinh viên</h1>
+<h1>Thêm lớp</h1>
 
 <form action="{{ route('courses.store') }}" method="POST">
     @csrf

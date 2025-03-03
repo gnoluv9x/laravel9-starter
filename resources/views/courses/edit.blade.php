@@ -1,4 +1,4 @@
-<h1>Cập nhật sinh viên</h1>
+<h1>Cập nhật lớp</h1>
 
 <form action="{{ route('courses.update', $course) }}" method="POST">
     @csrf
