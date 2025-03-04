@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enum\Students\StudentStatus;
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,11 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'course_id' => $this->faker->randomElement(Course::pluck('id')),
+            'status' => $this->faker->randomElement(StudentStatus::asArray()),
+            'gender' => $this->faker->boolean()
         ];
     }
 }
