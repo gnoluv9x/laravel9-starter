@@ -1,3 +1,5 @@
+@include('header')
+
 <h1>Danh sách lớp</h1>
 
 <a href="{{ route('courses.create') }}">Thêm mới</a>
@@ -14,7 +16,9 @@
         <th>#</th>
         <th>Name</th>
         <th>Edit</th>
-        <th>Delete</th>
+        @if (checkSuperAdminPerm())
+            <th>Delete</th>
+        @endif
     </tr>
 
     @foreach ($courses as $course)
@@ -22,14 +26,16 @@
             <td>{{ $course->id }}</td>
             <td>{{ $course->name }}</td>
             <td><a href="{{ route('courses.edit', $course) }}">Edit</a></td>
-            <td>
-                <form action="{{ route('courses.destroy', $course) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
+            @if (checkSuperAdminPerm())
+                <td>
+                    <form action="{{ route('courses.destroy', $course) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
 
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            @endif
         </tr>
     @endforeach
 </table>

@@ -60,11 +60,11 @@ class CourseController extends Controller
         return redirect()->route("courses.index");
     }
 
-    public function destroy(DestroyCourseRequest $requets, $course)
+    public function destroy(DestroyCourseRequest $requets, Course $course)
     {
-        dd($course);
-        exit();
-        Course::destroy($course->id);
+        // Course::destroy($course->id);
+
+        $course->delete();
 
         return redirect()->route("courses.index");
     }

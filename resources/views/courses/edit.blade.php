@@ -1,3 +1,5 @@
+@include('header')
+
 <h1>Cập nhật lớp</h1>
 
 <form action="{{ route('courses.update', $course) }}" method="POST">

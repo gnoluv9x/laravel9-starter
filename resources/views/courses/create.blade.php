@@ -1,3 +1,5 @@
+@include('header')
+
 <h1>Thêm lớp</h1>
 
 <form action="{{ route('courses.store') }}" method="POST">

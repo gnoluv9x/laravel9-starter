@@ -1,3 +1,5 @@
+@include('header')
+
 <h1>Danh sách sv</h1>
 
 <a href="{{ route('students.create') }}">Thêm mới</a>
@@ -18,7 +20,9 @@
         <th>Status</th>
         <th>Course name</th>
         <th>Edit</th>
-        <th>Delete</th>
+        @if (checkSuperAdminPerm())
+            <th>Delete</th>
+        @endif
     </tr>
 
     @foreach ($students as $student)
@@ -30,14 +34,16 @@
             <td>{{ $student->getStatus() }}</td>
             <td>{{ $student->course->name }}</td>
             <td><a href="{{ route('students.edit', $student) }}">Edit</a></td>
-            <td>
-                <form action="{{ route('students.destroy', $student) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
+            @if (checkSuperAdminPerm())
+                <td>
+                    <form action="{{ route('students.destroy', $student) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
 
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            @endif
         </tr>
     @endforeach
 </table>

@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $search = $request->get("q");
-        $students = Student::with('course')->paginate(2);
+        $students = Student::with('course')->paginate(10);
 
         return view('students.index', [
             'students' => $students,

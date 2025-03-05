@@ -1,3 +1,5 @@
+@include('header')
+
 <h1>Thêm sinh viên</h1>
 
 @if ($errors->any())
