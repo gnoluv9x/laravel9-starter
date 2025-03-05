@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Course extends Model
 {
     use HasFactory;
 
-    protected $dateFormat = 'U';
-
-    protected $fillable = ['email', 'password'];
+    public $fillable = ['name'];
 }
