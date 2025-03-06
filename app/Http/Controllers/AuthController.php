@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function processLogin(Request $request)
     {
         try {
-            $user = User::where('email', $request->post('email'))->where('password', $request->post('password'))->firstOrFail();
+            $user = User::where('email', $request->get('email'))->where('password', $request->get('password'))->firstOrFail();
 
             $request->session()->put('name', $user->name);
             $request->session()->put('email', $user->email);
